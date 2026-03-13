@@ -5,164 +5,511 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vishwajeet Singh | DevOps Engineer</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-<h1>Vishwajeet Singh</h1>
-<p>DevOps | Cloud | Full Stack Learner</p>
+<!-- Loading Animation -->
+<div id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Initializing...</div>
+</div>
 
-<nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#certifications">Certifications</a>
-<a href="#education">Education</a>
-<a href="#contact">Contact</a>
-</nav>
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Theme Toggle -->
+<button id="theme-toggle" class="theme-toggle">
+    <i class="fas fa-moon"></i>
+</button>
+
+<header>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="typing-animation">Vishwajeet Singh</h1>
+            <p class="subtitle">DevOps | Cloud | Full Stack Learner</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Hire Me</a>
+                <a href="#projects" class="btn-secondary">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-elements">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+                <div class="floating-circle circle-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
 </header>
 
 
-<section id="about">
-<h2>About Me</h2>
-
-<p>
-I am a Computer Science Engineering student at Lovely Professional University 
-with strong interest in DevOps, Cloud Computing and Automation. 
-I enjoy building CI/CD pipelines, containerized applications and scalable 
-cloud deployments using modern DevOps tools.
-</p>
-
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="about-description">
+                    I am a Computer Science Engineering student at <span class="highlight">Lovely Professional University</span>
+                    with strong interest in DevOps, Cloud Computing and Automation.
+                    I enjoy building CI/CD pipelines, containerized applications and scalable
+                    cloud deployments using modern DevOps tools.
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="8">0</div>
+                        <div class="stat-label">Technologies Mastered</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="code-animation">
+                    <div class="code-line">const devops = {</div>
+                    <div class="code-line indent">passionate: true,</div>
+                    <div class="code-line indent">cloud: "AWS",</div>
+                    <div class="code-line indent">automation: "Jenkins",</div>
+                    <div class="code-line indent">containers: "Docker"</div>
+                    <div class="code-line">};</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section id="skills">
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
 
-<h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-code"></i>
+                    Programming
+                </h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">C++</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<h3>Programming</h3>
-<ul>
-<li>C++</li>
-<li>Java</li>
-<li>Python</li>
-<li>JavaScript</li>
-<li>HTML</li>
-<li>CSS</li>
-</ul>
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-cloud"></i>
+                    DevOps & Cloud
+                </h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">AWS</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Docker</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Kubernetes</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Jenkins</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<h3>DevOps & Cloud</h3>
-<ul>
-<li>Jenkins</li>
-<li>Docker</li>
-<li>Kubernetes</li>
-<li>AWS</li>
-<li>Terraform</li>
-<li>Ansible</li>
-<li>Git & GitHub</li>
-</ul>
-
-<h3>Monitoring</h3>
-<ul>
-<li>Prometheus</li>
-<li>Grafana</li>
-</ul>
-
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-tools"></i>
+                    Tools & Technologies
+                </h3>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Terraform</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Ansible</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Git</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Linux</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section id="projects">
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Maven</span>
+                        <span class="tech-tag">Jenkins</span>
+                    </div>
+                </div>
+                <h3 class="project-title">End-to-End DevOps Pipeline</h3>
+                <p class="project-description">
+                    Built a complete CI/CD pipeline for a Java based calculator application using
+                    Maven, Jenkins, Docker and AWS EC2. Automated build, testing and deployment
+                    resulting in faster and reliable releases.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
 
-<h2>Projects</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Jenkins</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Automated Delivery Pipeline</h3>
+                <p class="project-description">
+                    Designed a DevOps pipeline using Maven, Jenkins, Docker and AWS to automate
+                    build lifecycle, testing and deployment for Java applications.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
 
-<div class="project">
-
-<h3>End-to-End DevOps Pipeline for Calculator Application</h3>
-
-<p>
-Built a complete CI/CD pipeline for a Java based calculator application using 
-Maven, Jenkins, Docker and AWS EC2. Automated build, testing and deployment 
-resulting in faster and reliable releases.
-</p>
-
-</div>
-
-
-<div class="project">
-
-<h3>Automated Delivery Using DevOps & Automation</h3>
-
-<p>
-Designed a DevOps pipeline using Maven, Jenkins, Docker and AWS to automate 
-build lifecycle, testing and deployment for Java applications.
-</p>
-
-</div>
-
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Ansible</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Infrastructure as Code</h3>
+                <p class="project-description">
+                    Implemented Infrastructure as Code using Terraform and Ansible for automated
+                    cloud infrastructure provisioning and configuration management on AWS.
+                </p>
+                <div class="project-links">
+                    <a href="#" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section id="certifications">
+<section id="certifications" class="section">
+    <div class="container">
+        <h2 class="section-title">Certifications & Training</h2>
+        <div class="certifications-grid">
+            <div class="certification-card">
+                <div class="cert-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="cert-content">
+                    <h3>Generative AI Professional</h3>
+                    <p class="cert-issuer">Oracle</p>
+                    <div class="cert-status">
+                        <span class="status-badge">Completed</span>
+                    </div>
+                </div>
+            </div>
 
-<h2>Certifications</h2>
+            <div class="certification-card">
+                <div class="cert-icon">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <div class="cert-content">
+                    <h3>Microsoft Azure Fundamentals</h3>
+                    <p class="cert-issuer">Microsoft</p>
+                    <div class="cert-status">
+                        <span class="status-badge">Certified</span>
+                    </div>
+                </div>
+            </div>
 
-<ul>
-<li>Generative AI Professional — Oracle</li>
-<li>Microsoft Azure Fundamentals</li>
-</ul>
-
+            <div class="certification-card">
+                <div class="cert-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div class="cert-content">
+                    <h3>Cloud Computing (AWS)</h3>
+                    <p class="cert-issuer">CipherSchools</p>
+                    <p class="cert-details">70 hour training covering AWS EC2, cloud networking, Linux administration and DevOps deployment practices.</p>
+                    <div class="cert-status">
+                        <span class="status-badge">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section id="training">
+<section id="education" class="section">
+    <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="education-content">
+                    <h3>B.Tech Computer Science Engineering</h3>
+                    <p class="education-institution">Lovely Professional University</p>
+                    <p class="education-details">CGPA: 7.96</p>
+                    <span class="education-year">2021 - 2025</span>
+                </div>
+            </div>
 
-<h2>Training</h2>
+            <div class="education-item">
+                <div class="education-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="education-content">
+                    <h3>12th Grade</h3>
+                    <p class="education-institution">Army Public School Jaipur Cantt</p>
+                    <p class="education-details">Percentage: 84.30%</p>
+                    <span class="education-year">2020</span>
+                </div>
+            </div>
 
-<p>
-Cloud Computing (AWS) — CipherSchools  
-70 hour training covering AWS EC2, cloud networking, Linux administration 
-and DevOps deployment practices.
-</p>
-
+            <div class="education-item">
+                <div class="education-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="education-content">
+                    <h3>10th Grade</h3>
+                    <p class="education-institution">Army Public School Jaipur Cantt</p>
+                    <p class="education-details">Percentage: 87.40%</p>
+                    <span class="education-year">2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
-<section id="education">
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p>singhvishwajeet843@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+91 8619396345</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <p>linkedin.com/in/vishwajeet04</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
 
-<h2>Education</h2>
-
-<p>
-B.Tech Computer Science Engineering  
-Lovely Professional University — CGPA: 7.96
-</p>
-
-<p>
-Army Public School Jaipur Cantt  
-12th — 84.30%
-</p>
-
-<p>
-Army Public School Jaipur Cantt  
-10th — 87.40%
-</p>
-
-</section>
-
-
-<section id="contact">
-
-<h2>Contact</h2>
-
-<p>Email: singhvishwajeet843@gmail.com</p>
-<p>Phone: +91 8619396345</p>
-<p>LinkedIn: linkedin.com/in/vishwajeet04</p>
-
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
 
 
 <footer>
-<p>© 2026 Vishwajeet Singh</p>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vishwajeet Singh</h3>
+                <p>DevOps Engineer passionate about automation and cloud technologies.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vishwajeet Singh. All rights reserved.</p>
+            <p>Made with <i class="fas fa-heart"></i> and lots of coffee</p>
+        </div>
+    </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
