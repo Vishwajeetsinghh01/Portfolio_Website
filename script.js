@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initStatsCounter();
     initContactForm();
     initTypingAnimation();
-    initParticleBackground();
+    // initParticleBackground(); // Disabled for performance
 });
 
 // Loading Animation
@@ -225,115 +225,32 @@ function initTypingAnimation() {
     setTimeout(typeWriter, 1000);
 }
 
-// Particle Background
-function initParticleBackground() {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'particle-canvas';
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '1';
-    document.body.appendChild(canvas);
-
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const particleCount = 50;
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    function createParticles() {
-        particles = [];
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1,
-                opacity: Math.random() * 0.5 + 0.2
-            });
-        }
-    }
-
-    function updateParticles() {
-        particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
-
-            if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-        });
-    }
-
-    function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        particles.forEach(particle => {
-            ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(56, 189, 248, ${particle.opacity})`;
-            ctx.fill();
-        });
-
-        // Draw connections
-        particles.forEach((particle, i) => {
-            particles.slice(i + 1).forEach(otherParticle => {
-                const dx = particle.x - otherParticle.x;
-                const dy = particle.y - otherParticle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 100) {
-                    ctx.beginPath();
-                    ctx.moveTo(particle.x, particle.y);
-                    ctx.lineTo(otherParticle.x, otherParticle.y);
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${0.1 * (1 - distance / 100)})`;
-                    ctx.stroke();
-                }
-            });
-        });
-    }
-
-    function animate() {
-        updateParticles();
-        drawParticles();
-        requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        createParticles();
-    });
-
-    resizeCanvas();
-    createParticles();
-    animate();
-}
+// Particle Background - Disabled for better performance on GitHub Pages
+// function initParticleBackground() {
+//     // ... code ...
+// }
 
 // Mouse follower effect
+const cursorFollower = document.createElement('div');
+cursorFollower.style.position = 'fixed';
+cursorFollower.style.width = '20px';
+cursorFollower.style.height = '20px';
+cursorFollower.style.border = '2px solid var(--primary-color)';
+cursorFollower.style.borderRadius = '50%';
+cursorFollower.style.pointerEvents = 'none';
+cursorFollower.style.zIndex = '9999';
+cursorFollower.style.transition = 'all 0.1s ease';
+cursorFollower.style.opacity = '0';
+document.body.appendChild(cursorFollower);
+
 document.addEventListener('mousemove', (e) => {
-    const cursor = document.createElement('div');
-    cursor.style.position = 'fixed';
-    cursor.style.width = '20px';
-    cursor.style.height = '20px';
-    cursor.style.border = '2px solid var(--primary-color)';
-    cursor.style.borderRadius = '50%';
-    cursor.style.pointerEvents = 'none';
-    cursor.style.zIndex = '9999';
-    cursor.style.left = e.clientX - 10 + 'px';
-    cursor.style.top = e.clientY - 10 + 'px';
-    cursor.style.transition = 'all 0.1s ease';
+    cursorFollower.style.left = e.clientX - 10 + 'px';
+    cursorFollower.style.top = e.clientY - 10 + 'px';
+    cursorFollower.style.opacity = '1';
+});
 
-    document.body.appendChild(cursor);
-
-    setTimeout(() => {
-        cursor.remove();
-    }, 100);
+document.addEventListener('mouseleave', () => {
+    cursorFollower.style.opacity = '0';
 });
 
 // Add hover effects to project cards
