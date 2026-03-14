@@ -1,5 +1,24 @@
 // Portfolio Website Interactive Script
 
+// Certificate data
+const certificates = {
+    oracle: {
+        title: 'Generative AI Professional',
+        url: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=D6EC534BA64F7123BA99EC8B0FDF25670E471B46A50198F6324BA1FE75ACB7C0',
+        downloadUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=D6EC534BA64F7123BA99EC8B0FDF25670E471B46A50198F6324BA1FE75ACB7C0'
+    },
+    microsoft: {
+        title: 'Microsoft Azure Fundamentals',
+        url: 'https://drive.google.com/file/d/1CcyAMSSL403F34JTsfqqVH1vsmL9VSaP/view?usp=drive_link',
+        downloadUrl: 'https://drive.google.com/uc?export=download&id=1CcyAMSSL403F34JTsfqqVH1vsmL9VSaP'
+    },
+    cipherschool: {
+        title: 'Cloud Computing (AWS)',
+        url: 'https://www.cipherschools.com/certificate/preview?id=687f196f7efd6d509070457b',
+        downloadUrl: 'https://www.cipherschools.com/certificate/preview?id=687f196f7efd6d509070457b'
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all features
     initLoading();
@@ -11,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initStatsCounter();
     initContactForm();
     initTypingAnimation();
+    initCertifications();
     // initParticleBackground(); // Disabled for performance
 });
 
@@ -299,6 +319,88 @@ setInterval(() => {
         circle.style.background = `linear-gradient(135deg, ${randomColor}, rgba(14, 165, 233, 0.1))`;
     });
 }, 3000);
+
+// Certifications functionality
+function initCertifications() {
+    // Initialize slider position
+    let currentSlide = 0;
+    const container = document.querySelector('.certifications-container');
+    const cards = document.querySelectorAll('.certification-card');
+
+    if (container && cards.length > 0) {
+        // Auto-scroll functionality (optional)
+        setInterval(() => {
+            slideCertifications(1);
+        }, 5000);
+    }
+}
+
+function slideCertifications(direction) {
+    const container = document.querySelector('.certifications-container');
+    const cards = document.querySelectorAll('.certification-card');
+    const cardWidth = cards[0].offsetWidth + 30; // 30px gap
+    const maxSlides = cards.length - Math.floor(container.offsetWidth / cardWidth);
+
+    let currentTransform = container.style.transform || 'translateX(0px)';
+    let currentX = parseInt(currentTransform.replace('translateX(', '').replace('px)', '')) || 0;
+
+    currentX += direction * cardWidth;
+
+    // Boundary checks
+    if (currentX > 0) currentX = 0;
+    if (currentX < -(maxSlides * cardWidth)) currentX = -(maxSlides * cardWidth);
+
+    container.style.transform = `translateX(${currentX}px)`;
+}
+
+function openCertModal(certType) {
+    const modal = document.getElementById('certModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const certFrame = document.getElementById('certFrame');
+    const downloadBtn = document.getElementById('modalDownloadBtn');
+
+    if (certificates[certType]) {
+        modalTitle.textContent = certificates[certType].title;
+        certFrame.src = certificates[certType].url;
+        downloadBtn.onclick = () => downloadCert(certType);
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeCertModal() {
+    const modal = document.getElementById('certModal');
+    const certFrame = document.getElementById('certFrame');
+
+    modal.style.display = 'none';
+    certFrame.src = '';
+    document.body.style.overflow = 'auto';
+}
+
+function downloadCert(certType) {
+    if (certificates[certType]) {
+        const link = document.createElement('a');
+        link.href = certificates[certType].downloadUrl;
+        link.download = `${certificates[certType].title.replace(/\s+/g, '_')}.pdf`;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+function downloadCertFromModal() {
+    // This will be set when modal opens
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('certModal');
+    if (event.target === modal) {
+        closeCertModal();
+    }
+}
 
 // Add keyboard navigation
 document.addEventListener('keydown', (e) => {

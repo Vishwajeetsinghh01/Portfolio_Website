@@ -331,46 +331,92 @@
 <section id="certifications" class="section">
     <div class="container">
         <h2 class="section-title">Certifications & Training</h2>
-        <div class="certifications-grid">
-            <a href="https://education.oracle.com/oracle-generative-ai-professional/PEXAM_000001" class="certification-card" target="_blank">
-                <div class="cert-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="cert-content">
-                    <h3>Generative AI Professional</h3>
-                    <p class="cert-issuer">Oracle</p>
-                    <div class="cert-status">
-                        <span class="status-badge">Completed</span>
+        <div class="certifications-slider">
+            <div class="certifications-container">
+                <div class="certification-card" data-cert="oracle">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Generative AI Professional</h3>
+                        <p class="cert-issuer">Oracle</p>
+                        <p class="cert-date">Issued: 2024</p>
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn-preview" onclick="openCertModal('oracle')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn-download" onclick="downloadCert('oracle')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
                     </div>
                 </div>
-            </a>
 
-            <a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" class="certification-card" target="_blank">
-                <div class="cert-icon">
-                    <i class="fab fa-microsoft"></i>
-                </div>
-                <div class="cert-content">
-                    <h3>Microsoft Azure Fundamentals</h3>
-                    <p class="cert-issuer">Microsoft</p>
-                    <div class="cert-status">
-                        <span class="status-badge">Certified</span>
+                <div class="certification-card" data-cert="microsoft">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Microsoft Azure Fundamentals</h3>
+                        <p class="cert-issuer">Microsoft</p>
+                        <p class="cert-date">Issued: 2024</p>
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn-preview" onclick="openCertModal('microsoft')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn-download" onclick="downloadCert('microsoft')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
                     </div>
                 </div>
-            </a>
 
-            <a href="https://www.cipherschools.com/" class="certification-card" target="_blank">
-                <div class="cert-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <div class="cert-content">
-                    <h3>Cloud Computing (AWS)</h3>
-                    <p class="cert-issuer">CipherSchools</p>
-                    <p class="cert-details">70 hour training covering AWS EC2, cloud networking, Linux administration and DevOps deployment practices.</p>
-                    <div class="cert-status">
-                        <span class="status-badge">Completed</span>
+                <div class="certification-card" data-cert="cipherschool">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Cloud Computing (AWS)</h3>
+                        <p class="cert-issuer">CipherSchools</p>
+                        <p class="cert-details">70 hour training covering AWS EC2, cloud networking, Linux administration and DevOps deployment practices.</p>
+                        <p class="cert-date">Completed: 2024</p>
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn-preview" onclick="openCertModal('cipherschool')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn-download" onclick="downloadCert('cipherschool')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
                     </div>
                 </div>
-            </a>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn prev" onclick="slideCertifications(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" onclick="slideCertifications(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 </section>
@@ -510,6 +556,23 @@
         </div>
     </div>
 </footer>
+
+<!-- Certificate Modal -->
+<div id="certModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Certificate Preview</h3>
+            <span class="modal-close" onclick="closeCertModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <iframe id="certFrame" src="" width="100%" height="600" frameborder="0"></iframe>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeCertModal()">Close</button>
+            <button class="btn-primary" id="modalDownloadBtn" onclick="downloadCertFromModal()">Download Certificate</button>
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
