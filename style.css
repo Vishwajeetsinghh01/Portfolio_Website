@@ -622,6 +622,8 @@ header {
     align-items: flex-start;
     gap: 20px;
     transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
 }
 
 .certification-card:hover {
