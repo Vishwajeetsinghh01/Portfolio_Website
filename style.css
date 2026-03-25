@@ -162,8 +162,8 @@ header {
 }
 
 .hero-profile-pic {
-    width: 400px;
-    height: 400px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid rgba(56, 189, 248, 0.85);
