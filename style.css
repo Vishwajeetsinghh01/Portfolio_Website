@@ -789,54 +789,6 @@ header {
     font-size: 0.84rem;
 }
 
-.featured-training-list {
-    display: grid;
-    gap: 28px;
-}
-
-.featured-training--compact {
-    margin-bottom: 0;
-}
-
-.featured-training-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.featured-training-certificate--placeholder {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 320px;
-}
-
-.training-certificate-placeholder {
-    min-height: 260px;
-    display: grid;
-    place-content: center;
-    text-align: center;
-    gap: 8px;
-    padding: 20px;
-    background:
-        linear-gradient(150deg, rgba(245, 158, 11, 0.18), rgba(56, 189, 248, 0.12)),
-        rgba(15, 23, 42, 0.85);
-}
-
-.training-certificate-placeholder i {
-    font-size: 2.2rem;
-    color: #fbbf24;
-}
-
-.training-certificate-placeholder h4 {
-    font-size: 1.25rem;
-    color: #e2e8f0;
-}
-
-.training-certificate-placeholder p {
-    color: #bfdbfe;
-    font-size: 0.95rem;
-}
 
 .certifications-container {
     display: flex;
@@ -1534,9 +1486,6 @@ footer {
         gap: 6px;
     }
 
-    .featured-training-actions {
-        flex-direction: column;
-    }
 
     .stats {
         grid-template-columns: 1fr;

@@ -368,27 +368,24 @@
             </div>
         </div>
 
-        <div class="featured-training-list">
-            <div class="featured-training featured-training--compact">
-                <div class="featured-training-content">
-                    <p class="training-duration">Issued 2024</p>
-                    <h3>Generative AI Professional</h3>
-                    <p class="training-provider">Oracle</p>
-
-                    <ul class="training-highlights">
-                        <li>Validated practical understanding of AI concepts, prompt engineering, and modern LLM use-cases.</li>
-                        <li>Covered responsible AI, enterprise use scenarios, and applied automation workflows.</li>
-                        <li>Credential verified through official Oracle certification portal.</li>
-                    </ul>
-
-                    <div class="training-tags">
-                        <span>Generative AI</span>
-                        <span>Prompt Engineering</span>
-                        <span>Responsible AI</span>
-                        <span>Oracle</span>
+        <div class="certifications-slider">
+            <div class="certifications-container">
+                <div class="certification-card" data-cert="oracle">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
                     </div>
-
-                    <div class="featured-training-actions">
+                    <div class="cert-content">
+                        <h3>Generative AI Professional</h3>
+                        <p class="cert-issuer">Oracle</p>
+                        <p class="cert-date">Issued: 2024</p>
+                    </div>
+                    <div class="cert-actions">
                         <button class="btn-preview" onclick="openCertModal('oracle')">
                             <i class="fas fa-eye"></i> Preview
                         </button>
@@ -398,39 +395,22 @@
                     </div>
                 </div>
 
-                <div class="featured-training-certificate featured-training-certificate--placeholder">
-                    <div class="training-certificate-placeholder">
-                        <i class="fas fa-robot"></i>
-                        <h4>Oracle Certification</h4>
-                        <p>Generative AI Professional</p>
+                <div class="certification-card" data-cert="microsoft">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
                     </div>
-                    <div class="training-certificate-meta">
-                        <span>Issuer: Oracle</span>
-                        <span>Status: Verified</span>
+                    <div class="cert-content">
+                        <h3>Microsoft Azure Fundamentals</h3>
+                        <p class="cert-issuer">Microsoft</p>
+                        <p class="cert-date">Issued: 2024</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="featured-training featured-training--compact">
-                <div class="featured-training-content">
-                    <p class="training-duration">Issued 2024</p>
-                    <h3>Microsoft Azure Fundamentals</h3>
-                    <p class="training-provider">Microsoft</p>
-
-                    <ul class="training-highlights">
-                        <li>Demonstrated cloud fundamentals across compute, storage, networking and core Azure services.</li>
-                        <li>Covered security, governance, pricing, and lifecycle concepts for production cloud workloads.</li>
-                        <li>Strengthened practical readiness for deploying and managing Azure-based environments.</li>
-                    </ul>
-
-                    <div class="training-tags">
-                        <span>Azure</span>
-                        <span>Cloud Fundamentals</span>
-                        <span>Security</span>
-                        <span>Microsoft</span>
-                    </div>
-
-                    <div class="featured-training-actions">
+                    <div class="cert-actions">
                         <button class="btn-preview" onclick="openCertModal('microsoft')">
                             <i class="fas fa-eye"></i> Preview
                         </button>
@@ -440,17 +420,39 @@
                     </div>
                 </div>
 
-                <div class="featured-training-certificate featured-training-certificate--placeholder">
-                    <div class="training-certificate-placeholder">
-                        <i class="fab fa-microsoft"></i>
-                        <h4>Microsoft Certificate</h4>
-                        <p>Azure Fundamentals</p>
+                <div class="certification-card" data-cert="cipherschool">
+                    <div class="cert-header">
+                        <div class="cert-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Verified</span>
+                        </div>
                     </div>
-                    <div class="training-certificate-meta">
-                        <span>Issuer: Microsoft</span>
-                        <span>Status: Verified</span>
+                    <div class="cert-content">
+                        <h3>Cloud Computing (AWS)</h3>
+                        <p class="cert-issuer">CipherSchools</p>
+                        <p class="cert-details">70 hour training covering AWS EC2, cloud networking, Linux administration and DevOps deployment practices.</p>
+                        <p class="cert-date">Completed: 2024</p>
+                    </div>
+                    <div class="cert-actions">
+                        <button class="btn-preview" onclick="openCertModal('cipherschool')">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn-download" onclick="downloadCert('cipherschool')">
+                            <i class="fas fa-download"></i> Download
+                        </button>
                     </div>
                 </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn prev" onclick="slideCertifications(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" onclick="slideCertifications(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
