@@ -4,18 +4,32 @@
 const certificates = {
     oracle: {
         title: 'Generative AI Professional',
+        issuer: 'Oracle',
+        thumbnailLabel: 'Oracle Certificate',
+        thumbnailIcon: 'fas fa-robot',
+        previewType: 'iframe',
         url: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=D6EC534BA64F7123BA99EC8B0FDF25670E471B46A50198F6324BA1FE75ACB7C0',
         downloadUrl: 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=D6EC534BA64F7123BA99EC8B0FDF25670E471B46A50198F6324BA1FE75ACB7C0'
     },
     microsoft: {
         title: 'Microsoft Azure Fundamentals',
+        issuer: 'Microsoft',
+        thumbnailLabel: 'Azure Fundamentals',
+        thumbnailIcon: 'fab fa-microsoft',
+        previewType: 'iframe',
         url: 'https://drive.google.com/file/d/1CcyAMSSL403F34JTsfqqVH1vsmL9VSaP/view?usp=drive_link',
         downloadUrl: 'https://drive.google.com/uc?export=download&id=1CcyAMSSL403F34JTsfqqVH1vsmL9VSaP'
     },
     cipherschool: {
         title: 'Cloud Computing (AWS)',
-        url: 'https://www.cipherschools.com/certificate/preview?id=687f196f7efd6d509070457b',
-        downloadUrl: 'https://www.cipherschools.com/certificate/preview?id=687f196f7efd6d509070457b'
+        issuer: 'CipherSchools',
+        thumbnailLabel: 'Cloud Computing (AWS)',
+        thumbnailIcon: 'fas fa-cloud',
+        previewType: 'image',
+        thumbnailUrl: 'images/Screenshot 2026-03-18 152057.png',
+        imageUrl: 'images/Screenshot 2026-03-18 152057.png',
+        url: 'images/Screenshot 2026-03-18 152057.png',
+        downloadUrl: 'images/Screenshot 2026-03-18 152057.png'
     }
 };
 
@@ -26,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initThemeToggle();
     initSmoothScrolling();
     initScrollAnimations();
+    initStaggeredReveal();
     initSkillBars();
     initStatsCounter();
     initContactForm();
@@ -143,6 +158,33 @@ function initScrollAnimations() {
             }
         });
     });
+}
+
+function initStaggeredReveal() {
+    const revealTargets = document.querySelectorAll(
+        '.skill-category, .project-card, .certification-card, .education-item, .contact-item, .stat-item'
+    );
+
+    revealTargets.forEach((target, index) => {
+        target.dataset.revealDelay = `${(index % 6) * 90}`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+
+            entry.target.style.transitionDelay = `${entry.target.dataset.revealDelay || 0}ms`;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach((target) => observer.observe(target));
 }
 
 // Skill Bars Animation
@@ -322,6 +364,9 @@ setInterval(() => {
 
 // Certifications functionality
 function initCertifications() {
+    renderCertificateThumbnails();
+    enableCardPreviewClick();
+
     // Initialize slider position
     let currentSlide = 0;
     const container = document.querySelector('.certifications-container');
@@ -333,6 +378,81 @@ function initCertifications() {
             slideCertifications(1);
         }, 5000);
     }
+}
+
+function renderCertificateThumbnails() {
+    const cards = document.querySelectorAll('.certification-card[data-cert]');
+
+    cards.forEach((card) => {
+        const certType = card.getAttribute('data-cert');
+        const cert = certificates[certType];
+        const certHeader = card.querySelector('.cert-header');
+
+        if (!cert || !certHeader || card.querySelector('.cert-thumbnail')) {
+            return;
+        }
+
+        const thumbnail = document.createElement('button');
+        thumbnail.type = 'button';
+        thumbnail.className = 'cert-thumbnail';
+        thumbnail.setAttribute('aria-label', `Preview ${cert.title}`);
+        thumbnail.addEventListener('click', () => openCertModal(certType));
+
+        if (cert.thumbnailUrl) {
+            const image = document.createElement('img');
+            image.src = cert.thumbnailUrl;
+            image.alt = `${cert.title} thumbnail`;
+            image.className = 'cert-thumbnail-image';
+            thumbnail.appendChild(image);
+        } else {
+            const fallback = document.createElement('div');
+            fallback.className = 'cert-thumbnail-fallback';
+            fallback.innerHTML = `
+                <i class="${cert.thumbnailIcon || 'fas fa-certificate'}"></i>
+                <span class="cert-thumbnail-title">${cert.thumbnailLabel || cert.title}</span>
+                <span class="cert-thumbnail-issuer">${cert.issuer || ''}</span>
+            `;
+            thumbnail.appendChild(fallback);
+        }
+
+        certHeader.insertAdjacentElement('afterend', thumbnail);
+    });
+}
+
+function enableCardPreviewClick() {
+    const cards = document.querySelectorAll('.certification-card[data-cert]');
+
+    cards.forEach((card) => {
+        const certType = card.getAttribute('data-cert');
+        if (!certType || card.classList.contains('card-previewable')) {
+            return;
+        }
+
+        card.classList.add('card-previewable');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `Open preview for ${certificates[certType]?.title || 'certificate'}`);
+
+        card.addEventListener('click', (event) => {
+            if (event.target.closest('.btn-download')) {
+                return;
+            }
+
+            openCertModal(certType);
+        });
+
+        card.addEventListener('keydown', (event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') {
+                return;
+            }
+
+            if (event.target.closest('.btn-download')) {
+                return;
+            }
+
+            event.preventDefault();
+            openCertModal(certType);
+        });
+    });
 }
 
 function slideCertifications(direction) {
@@ -354,56 +474,81 @@ function slideCertifications(direction) {
 }
 
 function openCertModal(certType) {
-    const modal = document.getElementById('certModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const certFrame = document.getElementById('certFrame');
-    const downloadBtn = document.getElementById('modalDownloadBtn');
+    const cert = certificates[certType];
+    const modal = document.getElementById('certificate-modal');
+    const modalTitle = document.getElementById('certificate-modal-title');
+    const modalBody = document.getElementById('certificate-modal-body');
 
-    if (certificates[certType]) {
-        modalTitle.textContent = certificates[certType].title;
-        certFrame.src = certificates[certType].url;
-        downloadBtn.onclick = () => downloadCert(certType);
-
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+    if (!cert || !modal || !modalTitle || !modalBody) {
+        return;
     }
-}
 
-function closeCertModal() {
-    const modal = document.getElementById('certModal');
-    const certFrame = document.getElementById('certFrame');
+    modalTitle.textContent = cert.title;
+    modalBody.innerHTML = '';
 
-    modal.style.display = 'none';
-    certFrame.src = '';
-    document.body.style.overflow = 'auto';
+    if (cert.previewType === 'image' && cert.imageUrl) {
+        const image = document.createElement('img');
+        image.src = cert.imageUrl;
+        image.alt = cert.title;
+        image.className = 'certificate-preview-image';
+        modalBody.appendChild(image);
+    } else {
+        const frame = document.createElement('iframe');
+        frame.src = cert.url;
+        frame.title = cert.title;
+        frame.className = 'certificate-preview-frame';
+        frame.loading = 'lazy';
+        modalBody.appendChild(frame);
+
+        frame.addEventListener('error', () => {
+            window.open(cert.url, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        });
+    }
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
 }
 
 function downloadCert(certType) {
     if (certificates[certType]) {
-        const link = document.createElement('a');
-        link.href = certificates[certType].downloadUrl;
-        link.download = `${certificates[certType].title.replace(/\s+/g, '_')}.pdf`;
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        window.open(certificates[certType].downloadUrl, '_blank');
     }
 }
 
-function downloadCertFromModal() {
-    // This will be set when modal opens
+function closeCertModal() {
+    const modal = document.getElementById('certificate-modal');
+    const modalBody = document.getElementById('certificate-modal-body');
+
+    if (!modal || !modalBody) {
+        return;
+    }
+
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    modalBody.innerHTML = '';
 }
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('certModal');
-    if (event.target === modal) {
-        closeCertModal();
-    }
+const modalCloseButton = document.getElementById('certificate-modal-close');
+const modalOverlay = document.getElementById('certificate-modal');
+
+if (modalCloseButton) {
+    modalCloseButton.addEventListener('click', closeCertModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', (event) => {
+        if (event.target === modalOverlay) {
+            closeCertModal();
+        }
+    });
 }
 
 // Add keyboard navigation
 document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeCertModal();
+    }
+
     if (e.key === 'ArrowDown' || e.key === ' ') {
         e.preventDefault();
         const currentSection = document.querySelector('.section.animate:last-of-type');

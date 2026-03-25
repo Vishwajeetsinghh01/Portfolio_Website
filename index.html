@@ -59,6 +59,7 @@
 <section id="about" class="section">
     <div class="container">
         <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">A quick snapshot of my background, learning path, and focus areas.</p>
         <div class="about-content">
             <div class="about-text">
                 <p class="about-description">
@@ -100,6 +101,7 @@
 <section id="skills" class="section">
     <div class="container">
         <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Core tools and technologies I use to build and deploy reliably.</p>
 
         <div class="skills-grid">
             <div class="skill-category">
@@ -244,6 +246,7 @@
 <section id="projects" class="section">
     <div class="container">
         <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Selected work focused on CI/CD, automation, and cloud workflows.</p>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
@@ -331,6 +334,7 @@
 <section id="certifications" class="section">
     <div class="container">
         <h2 class="section-title">Certifications & Training</h2>
+        <p class="section-subtitle">Verified credentials and practical training completed recently.</p>
         <div class="certifications-slider">
             <div class="certifications-container">
                 <div class="certification-card" data-cert="oracle">
@@ -425,6 +429,7 @@
 <section id="education" class="section">
     <div class="container">
         <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">Academic milestones that shaped my engineering foundation.</p>
         <div class="education-timeline">
             <div class="education-item">
                 <div class="education-icon">
@@ -434,7 +439,7 @@
                     <h3>B.Tech Computer Science Engineering</h3>
                     <p class="education-institution">Lovely Professional University</p>
                     <p class="education-details">CGPA: 7.96</p>
-                    <span class="education-year">2021 - 2025</span>
+                    <span class="education-year">2023 - 2027</span>
                 </div>
             </div>
 
@@ -456,7 +461,7 @@
                 </div>
                 <div class="education-content">
                     <h3>10th Grade</h3>
-                    <p class="education-institution">Army Public School Jaipur Cantt</p>
+                    <p class="education-insti0-tution">Army Public School Jaipur Cantt</p>
                     <p class="education-details">Percentage: 87.40%</p>
                     <span class="education-year">2018</span>
                 </div>
@@ -469,6 +474,7 @@
 <section id="contact" class="section">
     <div class="container">
         <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-subtitle">Open to internships, freelance work, and collaborative projects.</p>
         <div class="contact-content">
             <div class="contact-info">
                 <h3>Get In Touch</h3>
@@ -494,7 +500,7 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/Vishwajeetsinghh01" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://twitter.com/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
@@ -543,7 +549,7 @@
             <div class="footer-section">
                 <h4>Connect</h4>
                 <div class="footer-social">
-                    <a href="https://github.com/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/Vishwajeetsinghh01" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://linkedin.com/in/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://twitter.com/vishwajeet04" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="mailto:singhvishwajeet843@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
@@ -557,20 +563,13 @@
     </div>
 </footer>
 
-<!-- Certificate Modal -->
-<div id="certModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h3 id="modalTitle">Certificate Preview</h3>
-            <span class="modal-close" onclick="closeCertModal()">&times;</span>
-        </div>
-        <div class="modal-body">
-            <iframe id="certFrame" src="" width="100%" height="600" frameborder="0"></iframe>
-        </div>
-        <div class="modal-footer">
-            <button class="btn-secondary" onclick="closeCertModal()">Close</button>
-            <button class="btn-primary" id="modalDownloadBtn" onclick="downloadCertFromModal()">Download Certificate</button>
-        </div>
+<div id="certificate-modal" class="certificate-modal" aria-hidden="true">
+    <div class="certificate-modal-content" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+        <button id="certificate-modal-close" class="certificate-modal-close" aria-label="Close certificate preview">
+            <i class="fas fa-times"></i>
+        </button>
+        <h3 id="certificate-modal-title" class="certificate-modal-title">Certificate Preview</h3>
+        <div id="certificate-modal-body" class="certificate-modal-body"></div>
     </div>
 </div>
 
