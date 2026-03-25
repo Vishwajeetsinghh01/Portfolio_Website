@@ -830,10 +830,13 @@ header {
     background: var(--card-bg);
     border-radius: 16px;
     padding: 30px;
+    min-height: 360px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     scroll-snap-align: start;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .certification-card:hover {
@@ -899,6 +902,14 @@ header {
     color: var(--text-color);
     font-size: 1.3rem;
     font-weight: 600;
+    line-height: 1.35;
+    min-height: 3.5rem;
+}
+
+.cert-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .cert-issuer {
@@ -983,7 +994,8 @@ header {
 .cert-actions {
     display: flex;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: auto;
+    padding-top: 24px;
 }
 
 .btn-preview, .btn-download {
