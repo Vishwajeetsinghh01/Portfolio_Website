@@ -135,6 +135,14 @@ header {
     text-align: center;
 }
 
+.name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
 .typing-animation {
     font-size: 3.5rem;
     font-weight: 700;
@@ -147,6 +155,19 @@ header {
     overflow: hidden;
     border-right: 3px solid var(--primary-color);
     animation: typing 3s steps(20, end), blink 0.75s step-end infinite;
+}
+
+.name-row .typing-animation {
+    margin-bottom: 0;
+}
+
+.hero-profile-pic {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(56, 189, 248, 0.75);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.35);
 }
 
 @keyframes typing {
@@ -1437,11 +1458,21 @@ footer {
         text-align: center;
     }
 
+    .name-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
     .typing-animation {
         font-size: 2.5rem;
         white-space: normal;
         border-right: none;
         animation: none;
+    }
+
+    .hero-profile-pic {
+        width: 94px;
+        height: 94px;
     }
 
     .hero-buttons {
